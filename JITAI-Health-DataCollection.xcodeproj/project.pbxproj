@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0489716529C400A500108A48 /* JITAI-Health-DataCollection Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0489716A29C400A500108A48 /* JITAI_Health_DataCollectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */; };
+		0489716C29C400A500108A48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489716B29C400A500108A48 /* ContentView.swift */; };
+		0489716E29C400A700108A48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0489716D29C400A700108A48 /* Assets.xcassets */; };
+		0489717129C400A700108A48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0489717029C400A700108A48 /* Preview Assets.xcassets */; };
+		0489717C29C403A500108A48 /* GeoLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489717B29C403A500108A48 /* GeoLocationManager.swift */; };
+		0489718429C50C7000108A48 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489718329C50C7000108A48 /* DataManager.swift */; };
+		0489718629C53ED100108A48 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489718529C53ED100108A48 /* MotionManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0489716629C400A500108A48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0489715829C400A500108A48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0489716329C400A500108A48;
+			remoteInfo = "JITAI-Health-DataCollection Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0489717729C400A700108A48 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				0489716529C400A500108A48 /* JITAI-Health-DataCollection Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0489715E29C400A500108A48 /* JITAI-Health-DataCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JITAI-Health-DataCollection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JITAI-Health-DataCollection Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JITAI_Health_DataCollectionApp.swift; sourceTree = "<group>"; };
+		0489716B29C400A500108A48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0489716D29C400A700108A48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0489717029C400A700108A48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0489717B29C403A500108A48 /* GeoLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocationManager.swift; sourceTree = "<group>"; };
+		0489718329C50C7000108A48 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		0489718529C53ED100108A48 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		0489718729C55BF300108A48 /* JITAI-Health-DataCollection-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "JITAI-Health-DataCollection-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0489716129C400A500108A48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0489715729C400A500108A48 = {
+			isa = PBXGroup;
+			children = (
+				0489716829C400A500108A48 /* JITAI-Health-DataCollection Watch App */,
+				0489715F29C400A500108A48 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0489715F29C400A500108A48 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0489715E29C400A500108A48 /* JITAI-Health-DataCollection.app */,
+				0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0489716829C400A500108A48 /* JITAI-Health-DataCollection Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				0489718729C55BF300108A48 /* JITAI-Health-DataCollection-Watch-App-Info.plist */,
+				0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */,
+				0489718329C50C7000108A48 /* DataManager.swift */,
+				0489716B29C400A500108A48 /* ContentView.swift */,
+				0489716D29C400A700108A48 /* Assets.xcassets */,
+				0489716F29C400A700108A48 /* Preview Content */,
+				0489717B29C403A500108A48 /* GeoLocationManager.swift */,
+				0489718529C53ED100108A48 /* MotionManager.swift */,
+			);
+			path = "JITAI-Health-DataCollection Watch App";
+			sourceTree = "<group>";
+		};
+		0489716F29C400A700108A48 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0489717029C400A700108A48 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0489715D29C400A500108A48 /* JITAI-Health-DataCollection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0489717829C400A700108A48 /* Build configuration list for PBXNativeTarget "JITAI-Health-DataCollection" */;
+			buildPhases = (
+				0489715C29C400A500108A48 /* Resources */,
+				0489717729C400A700108A48 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0489716729C400A500108A48 /* PBXTargetDependency */,
+			);
+			name = "JITAI-Health-DataCollection";
+			productName = "JITAI-Health-DataCollection";
+			productReference = 0489715E29C400A500108A48 /* JITAI-Health-DataCollection.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		0489716329C400A500108A48 /* JITAI-Health-DataCollection Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0489717429C400A700108A48 /* Build configuration list for PBXNativeTarget "JITAI-Health-DataCollection Watch App" */;
+			buildPhases = (
+				0489716029C400A500108A48 /* Sources */,
+				0489716129C400A500108A48 /* Frameworks */,
+				0489716229C400A500108A48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "JITAI-Health-DataCollection Watch App";
+			productName = "JITAI-Health-DataCollection Watch App";
+			productReference = 0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0489715829C400A500108A48 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					0489715D29C400A500108A48 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					0489716329C400A500108A48 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 0489715B29C400A500108A48 /* Build configuration list for PBXProject "JITAI-Health-DataCollection" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0489715729C400A500108A48;
+			productRefGroup = 0489715F29C400A500108A48 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0489715D29C400A500108A48 /* JITAI-Health-DataCollection */,
+				0489716329C400A500108A48 /* JITAI-Health-DataCollection Watch App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0489715C29C400A500108A48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0489716229C400A500108A48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0489717129C400A700108A48 /* Preview Assets.xcassets in Resources */,
+				0489716E29C400A700108A48 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0489716029C400A500108A48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0489716C29C400A500108A48 /* ContentView.swift in Sources */,
+				0489718629C53ED100108A48 /* MotionManager.swift in Sources */,
+				0489718429C50C7000108A48 /* DataManager.swift in Sources */,
+				0489717C29C403A500108A48 /* GeoLocationManager.swift in Sources */,
+				0489716A29C400A500108A48 /* JITAI_Health_DataCollectionApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0489716729C400A500108A48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0489716329C400A500108A48 /* JITAI-Health-DataCollection Watch App */;
+			targetProxy = 0489716629C400A500108A48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0489717229C400A700108A48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0489717329C400A700108A48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		0489717529C400A700108A48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"JITAI-Health-DataCollection Watch App/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "JITAI-Health-DataCollection-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "JITAI-Health-DataCollection";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Collect location data";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Collect location data";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Collect motion data";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "gyroscope magnetometer accelerometer";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-Health-DataCollection.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		0489717629C400A700108A48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"JITAI-Health-DataCollection Watch App/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "JITAI-Health-DataCollection-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "JITAI-Health-DataCollection";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Collect location data";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Collect location data";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Collect motion data";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "gyroscope magnetometer accelerometer";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-Health-DataCollection.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		0489717929C400A700108A48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_KEY_CFBundleDisplayName = "JITAI-Health-DataCollection";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-Health-DataCollection";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0489717A29C400A700108A48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_KEY_CFBundleDisplayName = "JITAI-Health-DataCollection";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-Health-DataCollection";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0489715B29C400A500108A48 /* Build configuration list for PBXProject "JITAI-Health-DataCollection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0489717229C400A700108A48 /* Debug */,
+				0489717329C400A700108A48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0489717429C400A700108A48 /* Build configuration list for PBXNativeTarget "JITAI-Health-DataCollection Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0489717529C400A700108A48 /* Debug */,
+				0489717629C400A700108A48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0489717829C400A700108A48 /* Build configuration list for PBXNativeTarget "JITAI-Health-DataCollection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0489717929C400A700108A48 /* Debug */,
+				0489717A29C400A700108A48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0489715829C400A500108A48 /* Project object */;
+}
