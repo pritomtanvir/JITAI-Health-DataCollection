@@ -9,13 +9,15 @@ import Foundation
 import HealthKit
 
 
+
+//Uses healthkit to get heart rate, step count, active energy, and resting energy
 class HealthManager {
     let health_store = HKHealthStore()
     
     let ae_type = HKQuantityType(.activeEnergyBurned) //active energy
     let re_type = HKQuantityType(.basalEnergyBurned) //resting energy
-    let hr_type = HKQuantityType(.heartRate) //heart rate
-    let sc_type = HKQuantityType(.stepCount) //step count
+    let hr_type = HKQuantityType(.heartRate) //heart rate type
+    let sc_type = HKQuantityType(.stepCount) //step count type
     
     let query_descriptors = [
         HKQueryDescriptor(sampleType: HKQuantityType(.heartRate), predicate: nil),
@@ -56,7 +58,7 @@ class HealthManager {
     }
     
     
-    //Start heart rate updates if authorization is granted
+    //Start updates if read and share authorization is granted
     func authorization_complete(_ success: Bool, _ error: Error?) {
         if error != nil {
             print(error ?? "")
@@ -67,6 +69,7 @@ class HealthManager {
         }
     }
     
+    //unused right now because I cannot enable background health updates
     func background_authorization_completed(_ success: Bool, _ error: Error?) {
         if success == false {
             print("No background updates")
@@ -92,7 +95,7 @@ class HealthManager {
         }
     }
     
-    //Update current_hr when a query resolves
+    //Update when a query resolves
     func process_query(_ query: HKSampleQuery, _ results: [HKSample]?, _ error: Error?) {
         guard let samples = results as? [HKQuantitySample] else {
             // Handle any errors here.
@@ -116,6 +119,7 @@ class HealthManager {
         }
     }
     
+    //Runs each time a requested sample type changes in the healthkit
     func observer_update_handler(
         _ query: HKObserverQuery,
         _ types: Set<HKSampleType>?,

@@ -14,9 +14,9 @@ class DataManager {
     let update_interval: TimeInterval = 1
     
     //data collection objects
-    let geoloc_manager = GeoLocationManager()
-    let motion_manager: MotionManager
-    let health_manager = HealthManager()
+    let geoloc_manager = GeoLocationManager() //Contains the current location of the watch
+    let motion_manager: MotionManager //Contains accelerometer, gyroscope, and magnetometer data
+    let health_manager = HealthManager() //Contains heart rate, step count, active energy, and resting energy
     
     //Controls the rate at which data is fetched from each manager
     var report_timer: Timer?
@@ -32,6 +32,7 @@ class DataManager {
     }
     
     //Fetches current data from each manager for storage
+    //It just prints it to the console for the time being
     @objc func fetch_data(_ timer: Timer) {
         let loc = self.geoloc_manager.fetchCurrentLocation()!
         let motion = self.motion_manager.getMotionData().0?.acceleration

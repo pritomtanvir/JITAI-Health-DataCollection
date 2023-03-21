@@ -1,13 +1,3 @@
-//
-//  GeoLocationManager.swift
-//  JITAI-Health-DataCollection Watch App
-//
-//  Created by Jack on 3/16/23.
-//
-
-import Foundation
-
-//
 //  GeoLocationManager.swift
 //  JITAIHealth WatchKit Extension
 //

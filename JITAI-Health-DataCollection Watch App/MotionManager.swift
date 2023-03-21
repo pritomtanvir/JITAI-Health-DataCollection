@@ -15,19 +15,21 @@ class MotionManager {
     let motion_manager = CMMotionManager()
     
     init(update_interval interval: TimeInterval) {
-        motion_manager.startDeviceMotionUpdates(using: .xTrueNorthZVertical)
+        
         if motion_manager.isAccelerometerAvailable {
-            print("Starting accelerometer")
+            //THIS GIVES RAW ACCELERATION DATA
+            //Using device motion updates gives user acceleration instead of raw acceleration
+            print("Starting accelerometer updates")
             motion_manager.accelerometerUpdateInterval = interval
             motion_manager.startAccelerometerUpdates()
         }
         if motion_manager.isGyroAvailable {
-            print("Starting gyroscope")
+            print("Starting gyroscope updates")
             motion_manager.gyroUpdateInterval = interval
             motion_manager.startGyroUpdates()
         }
         if motion_manager.isMagnetometerAvailable {
-            print("Starting magnetometer")
+            print("Starting magnetometer updates")
             motion_manager.magnetometerUpdateInterval = interval
             motion_manager.startMagnetometerUpdates()
         }
