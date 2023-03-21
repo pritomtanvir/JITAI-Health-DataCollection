@@ -4,8 +4,12 @@
 <dict>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string></string>
+		<string>Physical Therapy</string>
 		<string>location</string>
+	</array>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>workout-processing</string>
 	</array>
 </dict>
 </plist>

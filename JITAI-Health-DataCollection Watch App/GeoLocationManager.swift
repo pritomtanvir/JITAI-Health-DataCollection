@@ -17,24 +17,14 @@ import Foundation
 import Foundation
 import CoreLocation
 
-protocol GeoLocationDelegate: AnyObject {
-    func toggleLocationUpdates(activity: String)
-    //func fetchCurrentLocation() -> CLLocation?
-}
 
-class GeoLocationManager: NSObject, CLLocationManagerDelegate, GeoLocationDelegate
+class GeoLocationManager: NSObject, CLLocationManagerDelegate
 {
-    func toggleLocationUpdates(activity: String) {
-        print("toggleLocationUpdates")
-    }
-    
-    
-    // Necessary location variables and distance measure.
+    //Holds the most up to date location of the watch
     
     var locationManager:CLLocationManager
     var currentLocation:CLLocation?
         
-    var delegate: GeoLocationDelegate? // delegate adds ToggleUpdates method.
     
     override init()
     {
@@ -45,12 +35,8 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate, GeoLocationDelega
         locationManager.delegate = self
         locationManager.requestLocation()
         locationManager.requestAlwaysAuthorization()
-        delegate = self
         // Initialization, but dont start until user starts walking.
         locationManager.startUpdatingLocation()
-        
-        print("initializing location manager")
-        
     }
     
     
@@ -81,19 +67,8 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate, GeoLocationDelega
         // Notify the user of any errors.
     }
     
-    // This method writes a walking data point to the Interface controller with a set timer.
-    func writeLocationData() {
-        let loc = self.fetchCurrentLocation()
-        if loc != nil {
-            let lat = loc?.coordinate.latitude
-            let lon = loc?.coordinate.longitude
-            print("location: ", lat.unsafelyUnwrapped, lon.unsafelyUnwrapped)
-           // InterfaceController.vm.sendMessageToPhone(type: "walking", loc: loc!, data: ["time" : Date.init(), "distance" : totalDistance, "speed" : loc!.speed])
-        }
-    }
     
     // This method returns the user's current location.
-    
     func fetchCurrentLocation() -> CLLocation? {
         //locationManager.requestLocation()
         let cl: CLLocation? = locationManager.location
