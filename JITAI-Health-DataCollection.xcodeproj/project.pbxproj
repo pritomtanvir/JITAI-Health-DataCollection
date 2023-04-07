@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0487B83F29DBA05100FD088A /* JITAIStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0487B83D29DBA05100FD088A /* JITAIStore.xcdatamodeld */; };
 		0489716529C400A500108A48 /* JITAI-Health-DataCollection Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0489716A29C400A500108A48 /* JITAI_Health_DataCollectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */; };
 		0489716C29C400A500108A48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489716B29C400A500108A48 /* ContentView.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0487B83E29DBA05100FD088A /* JITAIStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JITAIStore.xcdatamodel; sourceTree = "<group>"; };
 		0489715E29C400A500108A48 /* JITAI-Health-DataCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JITAI-Health-DataCollection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JITAI-Health-DataCollection Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JITAI_Health_DataCollectionApp.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				0489718829C8F0B900108A48 /* HealthManager.swift */,
 				0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */,
 				0489718329C50C7000108A48 /* DataManager.swift */,
+				0487B83D29DBA05100FD088A /* JITAIStore.xcdatamodeld */,
 				0489716B29C400A500108A48 /* ContentView.swift */,
 				0489716D29C400A700108A48 /* Assets.xcassets */,
 				0489716F29C400A700108A48 /* Preview Content */,
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0489716C29C400A500108A48 /* ContentView.swift in Sources */,
+				0487B83F29DBA05100FD088A /* JITAIStore.xcdatamodeld in Sources */,
 				0489718929C8F0B900108A48 /* HealthManager.swift in Sources */,
 				0489718629C53ED100108A48 /* MotionManager.swift in Sources */,
 				0489718429C50C7000108A48 /* DataManager.swift in Sources */,
@@ -486,6 +490,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0487B83D29DBA05100FD088A /* JITAIStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0487B83E29DBA05100FD088A /* JITAIStore.xcdatamodel */,
+			);
+			currentVersion = 0487B83E29DBA05100FD088A /* JITAIStore.xcdatamodel */;
+			path = JITAIStore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0489715829C400A500108A48 /* Project object */;
 }

@@ -14,6 +14,8 @@ import HealthKit
 class HealthManager {
     let health_store = HKHealthStore()
     
+    var workout_session: HKWorkoutSession?
+    
     let ae_type = HKQuantityType(.activeEnergyBurned) //active energy
     let re_type = HKQuantityType(.basalEnergyBurned) //resting energy
     let hr_type = HKQuantityType(.heartRate) //heart rate type
@@ -47,7 +49,8 @@ class HealthManager {
            health_store.authorizationStatus(for: ae_type) == HKAuthorizationStatus.sharingAuthorized &&
            health_store.authorizationStatus(for: re_type) == HKAuthorizationStatus.sharingAuthorized
         {
-            start_hr_observer()
+            start_observer()
+            startWorkout()
         } else {
             health_store.requestAuthorization(
                 toShare: [hr_type, sc_type, ae_type, re_type],
@@ -65,7 +68,8 @@ class HealthManager {
             return
         }
         if success == true {
-            start_hr_observer()
+            start_observer()
+            startWorkout()
         }
     }
     
@@ -81,7 +85,7 @@ class HealthManager {
     //MARK: Heart rate update observer
     
     //starts updating current_hr
-    func start_hr_observer() {
+    func start_observer() {
         if observer != nil {
             print("Starting hr query")
             health_store.execute(observer!)
@@ -89,7 +93,7 @@ class HealthManager {
     }
     
     //Stops updating current_hr
-    func stop_hr_observer() {
+    func stop_observer() {
         if observer != nil {
             health_store.stop(observer!)
         }
@@ -138,6 +142,49 @@ class HealthManager {
             }
         }
         handler()
+    }
+    
+    //MARK: Workout session
+    
+    func startWorkout() {
+        // If we have already started the workout, then do nothing.
+        
+        print("Starting Workout")
+        
+        if (workout_session != nil) {
+            return
+        }
+
+        // Configure the workout session. Change these later?
+        let workoutConfiguration = HKWorkoutConfiguration()
+        workoutConfiguration.activityType = .play
+        workoutConfiguration.locationType = .indoor
+        
+        do {
+            workout_session = try HKWorkoutSession(healthStore: health_store, configuration: workoutConfiguration)
+        } catch {
+            fatalError("Unable to create the workout session!")
+        }
+
+        // Start the workout session and device motion updates.
+        workout_session!.startActivity(with: Date.init()) // Start activity now
+        print("Starting workout session")
+        //workout_session!.pause()
+        // Start updates in MotionManager.
+    }
+
+    func stopWorkout() {
+        // If we have already stopped the workout, then do nothing.
+        if (workout_session == nil) {
+            print("Session Already Nil")
+            return
+        }
+        
+        // Stop the device motion updates and workout session.
+        workout_session!.end()
+
+        // Clear the workout session.
+        workout_session = nil
     }
 
 }

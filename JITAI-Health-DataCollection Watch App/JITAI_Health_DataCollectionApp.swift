@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct JITAI_Health_DataCollection_Watch_AppApp: App {
     var data_manager =  DataManager()
+    
     
     
     var body: some Scene {
