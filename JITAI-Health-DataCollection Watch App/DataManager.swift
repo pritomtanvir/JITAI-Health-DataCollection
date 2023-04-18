@@ -24,10 +24,15 @@ class DataManager {
     let wk_interface = WKInterfaceDevice()
     
     //Controls the rate at which data is fetched from each manager
+    var read_timer: Timer?
+    
+    //Controls the rate at which data is fetch from the store and sent to the server
     var report_timer: Timer?
     
     
     init() {
+        wk_interface.isBatteryMonitoringEnabled = true
+        
         container.loadPersistentStores { storeDescription, error in
             if let error = error {
                 print("Unresolved error \(error)")
@@ -35,15 +40,6 @@ class DataManager {
         } 
         
         motion_manager = MotionManager(update_interval: update_interval)
-        report_timer = Timer.scheduledTimer(
-            timeInterval: update_interval, target: self,
-            selector: #selector(save_data),
-            userInfo: nil, repeats: true
-        )
-        
-        wk_interface.isBatteryMonitoringEnabled = true
-        
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(read_data), userInfo: nil, repeats: true)
     }
     
     //Fetches current data from each manager for storage
@@ -102,7 +98,26 @@ class DataManager {
         catch let error {
             print("Failed to fetch data: ", error)
         }
-        
     }
     
+    
+    func start_collecting() {
+        print("Starting data collection")
+        
+        read_timer = Timer.scheduledTimer(
+            timeInterval: update_interval,
+            target: self,
+            selector: #selector(save_data),
+            userInfo: nil,
+            repeats: true
+        )
+        
+        report_timer = Timer.scheduledTimer(
+            timeInterval: 5,
+            target: self,
+            selector: #selector(read_data),
+            userInfo: nil,
+            repeats: true
+        )
+    }
 }
