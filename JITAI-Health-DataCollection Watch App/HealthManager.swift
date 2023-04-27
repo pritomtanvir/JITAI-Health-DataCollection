@@ -162,15 +162,15 @@ class HealthManager {
         
         do {
             workout_session = try HKWorkoutSession(healthStore: health_store, configuration: workoutConfiguration)
+            
+            // Start the workout session and device motion updates.
+            workout_session!.startActivity(with: Date.init()) // Start activity now
+            print("Starting workout session")
+            workout_session!.pause()
+            
         } catch {
             fatalError("Unable to create the workout session!")
         }
-
-        // Start the workout session and device motion updates.
-        workout_session!.startActivity(with: Date.init()) // Start activity now
-        print("Starting workout session")
-        //workout_session!.pause()
-        // Start updates in MotionManager.
     }
 
     func stopWorkout() {
