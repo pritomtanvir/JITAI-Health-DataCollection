@@ -128,7 +128,10 @@ class DataManager {
         
         if(data_array.isEmpty == false) {
             //upload data to the server after emptying the store
+            print("sending data")
             upload_manager.upload_data(data_array)
+        } else {
+            print("empty data array")
         }
     }
     
@@ -143,6 +146,11 @@ class DataManager {
             userInfo: nil,
             repeats: true
         )
+    }
+    
+    func stop_collecting() {
+        print("Stopping data collection")
+        read_timer = nil
     }
     
 }

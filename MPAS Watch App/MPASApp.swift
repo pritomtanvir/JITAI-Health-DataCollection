@@ -22,6 +22,7 @@ struct JITAI_Health_DataCollection_Watch_AppApp: App {
                 Button("Start Collecting", action: start_collecting);
             } else {
                 Text("Collecting data...")
+                Button("Stop collecting data", action: stop_collecting)
             }
             Spacer()
         }
@@ -30,6 +31,11 @@ struct JITAI_Health_DataCollection_Watch_AppApp: App {
     func start_collecting() {
         is_active = true
         data_manager.start_collecting()
+    }
+    
+    func stop_collecting() {
+        is_active = false
+        data_manager.stop_collecting()
     }
     
 }

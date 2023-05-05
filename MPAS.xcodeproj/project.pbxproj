@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0487B84129F9F65F00FD088A /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487B84029F9F65F00FD088A /* UploadManager.swift */; };
-		0489716529C400A500108A48 /* JITAI-Health-DataCollection Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0489716A29C400A500108A48 /* JITAI_Health_DataCollectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */; };
+		0489716529C400A500108A48 /* MPAS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0489716429C400A500108A48 /* MPAS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0489716A29C400A500108A48 /* MPASApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489716929C400A500108A48 /* MPASApp.swift */; };
 		0489716C29C400A500108A48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489716B29C400A500108A48 /* ContentView.swift */; };
 		0489716E29C400A700108A48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0489716D29C400A700108A48 /* Assets.xcassets */; };
 		0489717129C400A700108A48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0489717029C400A700108A48 /* Preview Assets.xcassets */; };
@@ -37,7 +37,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				0489716529C400A500108A48 /* JITAI-Health-DataCollection Watch App.app in Embed Watch Content */,
+				0489716529C400A500108A48 /* MPAS Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,18 +47,18 @@
 /* Begin PBXFileReference section */
 		0487B83E29DBA05100FD088A /* JITAIStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JITAIStore.xcdatamodel; sourceTree = "<group>"; };
 		0487B84029F9F65F00FD088A /* UploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadManager.swift; sourceTree = "<group>"; };
-		0489715E29C400A500108A48 /* JITAI-Health-DataCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JITAI-Health-DataCollection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JITAI-Health-DataCollection Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JITAI_Health_DataCollectionApp.swift; sourceTree = "<group>"; };
+		0489715E29C400A500108A48 /* MPAS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPAS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0489716429C400A500108A48 /* MPAS Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MPAS Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0489716929C400A500108A48 /* MPASApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPASApp.swift; sourceTree = "<group>"; };
 		0489716B29C400A500108A48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0489716D29C400A700108A48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0489717029C400A700108A48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0489717B29C403A500108A48 /* GeoLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocationManager.swift; sourceTree = "<group>"; };
 		0489718329C50C7000108A48 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0489718529C53ED100108A48 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		0489718729C55BF300108A48 /* JITAI-Health-DataCollection-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "JITAI-Health-DataCollection-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0489718729C55BF300108A48 /* MPAS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MPAS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0489718829C8F0B900108A48 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
-		0489718A29C8F8DC00108A48 /* JITAI-Health-DataCollection Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JITAI-Health-DataCollection Watch App.entitlements"; sourceTree = "<group>"; };
+		0489718A29C8F8DC00108A48 /* MPAS Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MPAS Watch App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 		0489715729C400A500108A48 = {
 			isa = PBXGroup;
 			children = (
-				0489716829C400A500108A48 /* JITAI-Health-DataCollection Watch App */,
+				0489716829C400A500108A48 /* MPAS Watch App */,
 				0489715F29C400A500108A48 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,19 +83,19 @@
 		0489715F29C400A500108A48 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0489715E29C400A500108A48 /* JITAI-Health-DataCollection.app */,
-				0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */,
+				0489715E29C400A500108A48 /* MPAS.app */,
+				0489716429C400A500108A48 /* MPAS Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0489716829C400A500108A48 /* JITAI-Health-DataCollection Watch App */ = {
+		0489716829C400A500108A48 /* MPAS Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				0489718A29C8F8DC00108A48 /* JITAI-Health-DataCollection Watch App.entitlements */,
-				0489718729C55BF300108A48 /* JITAI-Health-DataCollection-Watch-App-Info.plist */,
+				0489718A29C8F8DC00108A48 /* MPAS Watch App.entitlements */,
+				0489718729C55BF300108A48 /* MPAS-Watch-App-Info.plist */,
 				0489718829C8F0B900108A48 /* HealthManager.swift */,
-				0489716929C400A500108A48 /* JITAI_Health_DataCollectionApp.swift */,
+				0489716929C400A500108A48 /* MPASApp.swift */,
 				0489718329C50C7000108A48 /* DataManager.swift */,
 				0487B84029F9F65F00FD088A /* UploadManager.swift */,
 				0487B83D29DBA05100FD088A /* JITAIStore.xcdatamodeld */,
@@ -105,7 +105,7 @@
 				0489717B29C403A500108A48 /* GeoLocationManager.swift */,
 				0489718529C53ED100108A48 /* MotionManager.swift */,
 			);
-			path = "JITAI-Health-DataCollection Watch App";
+			path = "MPAS Watch App";
 			sourceTree = "<group>";
 		};
 		0489716F29C400A700108A48 /* Preview Content */ = {
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0489715D29C400A500108A48 /* JITAI-Health-DataCollection */ = {
+		0489715D29C400A500108A48 /* MPAS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0489717829C400A700108A48 /* Build configuration list for PBXNativeTarget "JITAI-Health-DataCollection" */;
+			buildConfigurationList = 0489717829C400A700108A48 /* Build configuration list for PBXNativeTarget "MPAS" */;
 			buildPhases = (
 				0489715C29C400A500108A48 /* Resources */,
 				0489717729C400A700108A48 /* Embed Watch Content */,
@@ -131,14 +131,14 @@
 			dependencies = (
 				0489716729C400A500108A48 /* PBXTargetDependency */,
 			);
-			name = "JITAI-Health-DataCollection";
+			name = MPAS;
 			productName = "JITAI-Health-DataCollection";
-			productReference = 0489715E29C400A500108A48 /* JITAI-Health-DataCollection.app */;
+			productReference = 0489715E29C400A500108A48 /* MPAS.app */;
 			productType = "com.apple.product-type.application.watchapp2-container";
 		};
-		0489716329C400A500108A48 /* JITAI-Health-DataCollection Watch App */ = {
+		0489716329C400A500108A48 /* MPAS Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0489717429C400A700108A48 /* Build configuration list for PBXNativeTarget "JITAI-Health-DataCollection Watch App" */;
+			buildConfigurationList = 0489717429C400A700108A48 /* Build configuration list for PBXNativeTarget "MPAS Watch App" */;
 			buildPhases = (
 				0489716029C400A500108A48 /* Sources */,
 				0489716129C400A500108A48 /* Frameworks */,
@@ -148,9 +148,9 @@
 			);
 			dependencies = (
 			);
-			name = "JITAI-Health-DataCollection Watch App";
+			name = "MPAS Watch App";
 			productName = "JITAI-Health-DataCollection Watch App";
-			productReference = 0489716429C400A500108A48 /* JITAI-Health-DataCollection Watch App.app */;
+			productReference = 0489716429C400A500108A48 /* MPAS Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -171,7 +171,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0489715B29C400A500108A48 /* Build configuration list for PBXProject "JITAI-Health-DataCollection" */;
+			buildConfigurationList = 0489715B29C400A500108A48 /* Build configuration list for PBXProject "MPAS" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -184,8 +184,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0489715D29C400A500108A48 /* JITAI-Health-DataCollection */,
-				0489716329C400A500108A48 /* JITAI-Health-DataCollection Watch App */,
+				0489715D29C400A500108A48 /* MPAS */,
+				0489716329C400A500108A48 /* MPAS Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -221,7 +221,7 @@
 				0489717C29C403A500108A48 /* GeoLocationManager.swift in Sources */,
 				04FCF85929FA043B008030B3 /* JITAIStore.xcdatamodeld in Sources */,
 				0487B84129F9F65F00FD088A /* UploadManager.swift in Sources */,
-				0489716A29C400A500108A48 /* JITAI_Health_DataCollectionApp.swift in Sources */,
+				0489716A29C400A500108A48 /* MPASApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +230,7 @@
 /* Begin PBXTargetDependency section */
 		0489716729C400A500108A48 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0489716329C400A500108A48 /* JITAI-Health-DataCollection Watch App */;
+			target = 0489716329C400A500108A48 /* MPAS Watch App */;
 			targetProxy = 0489716629C400A500108A48 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -350,16 +350,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "JITAI-Health-DataCollection Watch App/JITAI-Health-DataCollection Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "MPAS Watch App/MPAS Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"JITAI-Health-DataCollection Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MPAS Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = JG7HQC37CW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "JITAI-Health-DataCollection-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "JITAI-Health-DataCollection";
+				INFOPLIST_FILE = "MPAS-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MPAS;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Can we user health records?";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Can we use health share usage?";
@@ -375,7 +375,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-Health-DataCollection.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = udel.edu.MPAS.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -392,16 +392,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "JITAI-Health-DataCollection Watch App/JITAI-Health-DataCollection Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "MPAS Watch App/MPAS Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"JITAI-Health-DataCollection Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MPAS Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = JG7HQC37CW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "JITAI-Health-DataCollection-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "JITAI-Health-DataCollection";
+				INFOPLIST_FILE = "MPAS-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MPAS;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Can we user health records?";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Can we use health share usage?";
@@ -417,7 +417,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-Health-DataCollection.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = udel.edu.MPAS.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -466,7 +466,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0489715B29C400A500108A48 /* Build configuration list for PBXProject "JITAI-Health-DataCollection" */ = {
+		0489715B29C400A500108A48 /* Build configuration list for PBXProject "MPAS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0489717229C400A700108A48 /* Debug */,
@@ -475,7 +475,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0489717429C400A700108A48 /* Build configuration list for PBXNativeTarget "JITAI-Health-DataCollection Watch App" */ = {
+		0489717429C400A700108A48 /* Build configuration list for PBXNativeTarget "MPAS Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0489717529C400A700108A48 /* Debug */,
@@ -484,7 +484,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0489717829C400A700108A48 /* Build configuration list for PBXNativeTarget "JITAI-Health-DataCollection" */ = {
+		0489717829C400A700108A48 /* Build configuration list for PBXNativeTarget "MPAS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0489717929C400A700108A48 /* Debug */,
