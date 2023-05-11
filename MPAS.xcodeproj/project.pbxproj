@@ -355,13 +355,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MPAS Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = JG7HQC37CW;
+				DEVELOPMENT_TEAM = 7E65X69U2S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MPAS-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MPAS;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Can we user health records?";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Can we use health records?";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Can we use health share usage?";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Health update usage?";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Collect location data";
@@ -375,7 +375,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = udel.edu.MPAS.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-MPAS.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -397,13 +397,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MPAS Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = JG7HQC37CW;
+				DEVELOPMENT_TEAM = 7E65X69U2S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MPAS-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MPAS;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Can we user health records?";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Can we use health records?";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Can we use health share usage?";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Health update usage?";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Collect location data";
@@ -417,7 +417,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = udel.edu.MPAS.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-MPAS.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -436,10 +436,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JG7HQC37CW;
+				DEVELOPMENT_TEAM = 7E65X69U2S;
 				INFOPLIST_KEY_CFBundleDisplayName = "JITAI-Health-DataCollection";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-Health-DataCollection";
+				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-MPAS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -452,10 +452,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JG7HQC37CW;
+				DEVELOPMENT_TEAM = 7E65X69U2S;
 				INFOPLIST_KEY_CFBundleDisplayName = "JITAI-Health-DataCollection";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-Health-DataCollection";
+				PRODUCT_BUNDLE_IDENTIFIER = "udel.edu.JITAI-MPAS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

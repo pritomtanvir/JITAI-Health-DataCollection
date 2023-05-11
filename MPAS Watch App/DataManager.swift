@@ -12,8 +12,10 @@ import Network
 
 
 //This class holds instances of each manager that collects required data
-class DataManager {
+class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     let container = NSPersistentContainer(name: "JITAIStore")
+    
+    var participant_id: String?
     
     //data collection objects
     let geoloc_manager = GeoLocationManager() //Contains the current time, location, and weather
@@ -32,8 +34,14 @@ class DataManager {
     let report_interval: TimeInterval = 1.0
     var report_timer: Timer?
     
+    var extended_session = WKExtendedRuntimeSession()
+
     
-    init() {
+    override init() {
+        motion_manager = MotionManager(update_interval: read_interval)
+        
+        super.init()
+        extended_session.delegate = self
         wk_interface.isBatteryMonitoringEnabled = true
         
         container.loadPersistentStores { storeDescription, error in
@@ -42,15 +50,28 @@ class DataManager {
             }
         } 
         
-        motion_manager = MotionManager(update_interval: read_interval)
+        participant_id = fetch_participant_id()
         
         connection_monitor.pathUpdateHandler = network_change;
         connection_monitor.start(queue: DispatchQueue(label: "Network Monitor"))
+        
+        /* Uncomment to call upload_data without requiring a connection
+        report_timer = Timer.scheduledTimer(
+            timeInterval: report_interval,
+            target: self,
+            selector: #selector(send_data),
+            userInfo: nil,
+            repeats: true
+        )
+        */
+        
     }
     
     func network_change(_ path: NWPath) {
         if path.status == .satisfied {
+            if(report_timer != nil) {return;}
             print("Start sending to server");
+            
             report_timer = Timer.scheduledTimer(
                 timeInterval: report_interval,
                 target: self,
@@ -59,6 +80,7 @@ class DataManager {
                 repeats: true
             )
         } else {
+            report_timer?.invalidate()
             report_timer = nil;
             print("Stop sending to server");
         }
@@ -72,10 +94,19 @@ class DataManager {
         }
         
         let motion = self.motion_manager.getMotionData()
-        let acceleration = motion.0.debugDescription//String(format: "x:%.3f y:%.3f z%.3f\n", motion.0?.x ?? 0.0, motion.0?.y ?? 0.0, motion.0?.z ?? 0.0)
-        let gyro = motion.1.debugDescription
-        let magnet = motion.2.debugDescription
-        let date = String(Date().debugDescription)
+        let acceleration = String(format: "x:%.3f y:%.3f z:%.3f", motion.0?.x ?? Double.nan, motion.0?.y ?? Double.nan, motion.0?.z ?? Double.nan)
+        let gyro = String(format: "x:%.3f y:%.3f z:%.3f", motion.1?.rotationRate.x ?? Double.nan, motion.1?.rotationRate.y ?? Double.nan, motion.1?.rotationRate.z ?? Double.nan)
+        let magnet = String(format: "x:%.3f y:%.3f z:%.3f", motion.2?.magneticField.x ?? Double.nan, motion.2?.magneticField.y ?? Double.nan, motion.2?.magneticField.z ?? Double.nan)
+        
+        
+        //getting the time
+        let timezoneOffset =  TimeZone.current.secondsFromGMT()
+        let epochDate = Date.init().timeIntervalSince1970
+        let timezoneEpochOffset = (epochDate + Double(timezoneOffset))
+        let time = Date(timeIntervalSince1970: timezoneEpochOffset)
+        let format = DateFormatter(); format.dateFormat = "y-MM-dd H:mm:ss.SSSS"
+        let currentTime = format.string(from: time)
+        
         let heart_rate = health_manager.current_hr
         let step_count = health_manager.current_steps
         let active_energy = health_manager.active_energy
@@ -85,7 +116,7 @@ class DataManager {
         guard let entity = NSEntityDescription.entity(forEntityName: "StreamData", in: container.viewContext)
         else{return}
         let datapoint = NSManagedObject(entity: entity, insertInto: container.viewContext)
-        datapoint.setValue(date, forKey: "time")
+        datapoint.setValue(currentTime, forKey: "time")
         datapoint.setValue(location, forKey: "location")
         datapoint.setValue(Int(heart_rate), forKey: "heartrate")
         datapoint.setValue(Int(step_count), forKey: "stepcount")
@@ -95,7 +126,7 @@ class DataManager {
         datapoint.setValue(battery, forKey: "battery")
         datapoint.setValue(active_energy, forKey: "activeenergy")
         datapoint.setValue(resting_energy, forKey: "restingenergy")
-        datapoint.setValue("", forKey: "participantid")
+        datapoint.setValue(participant_id ?? "", forKey: "participantid")
         
         guard container.viewContext.hasChanges else { return }
         do {
@@ -128,7 +159,6 @@ class DataManager {
         
         if(data_array.isEmpty == false) {
             //upload data to the server after emptying the store
-            print("sending data")
             upload_manager.upload_data(data_array)
         } else {
             print("empty data array")
@@ -138,6 +168,7 @@ class DataManager {
     
     func start_collecting() {
         print("Starting data collection")
+        if(read_timer != nil){return;}
         
         read_timer = Timer.scheduledTimer(
             timeInterval: read_interval,
@@ -150,7 +181,48 @@ class DataManager {
     
     func stop_collecting() {
         print("Stopping data collection")
-        read_timer = nil
+        read_timer?.invalidate()
+        read_timer = nil 
+    }
+    
+    //Saves the input string to the persistent container as a ParticipantID
+    func save_participant_id(_ id: String) {
+        self.participant_id = id
+        guard let entity = NSEntityDescription.entity(forEntityName: "ParticipantID", in: container.viewContext)
+        else{return}
+        let datapoint = NSManagedObject(entity: entity, insertInto: container.viewContext)
+        datapoint.setValue(id, forKey: "id")
+    }
+    
+    func fetch_participant_id() -> String? {
+        var ret: String? = nil
+        let request = NSFetchRequest<ParticipantID>(entityName: "ParticipantID");
+        request.fetchLimit = 1
+        do {
+            let result = try container.viewContext.fetch(request);
+            for res in result {
+                ret = res.id
+            }
+        } catch let error {
+            print("Error fetching participant id")
+        }
+        
+        return ret
+    }
+    
+    
+    //MARK: Extended runtime session delegate functions
+    
+    func extendedRuntimeSessionDidStart(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+        print("Started extended runtime session")
+    }
+
+    func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+        print("Stopping extended runtime session")
+    }
+        
+    func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {
+        print("Stopped extended runtime session")
     }
     
 }
