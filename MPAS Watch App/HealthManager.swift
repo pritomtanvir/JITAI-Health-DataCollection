@@ -148,9 +148,6 @@ class HealthManager {
     
     func startWorkout() {
         // If we have already started the workout, then do nothing.
-        
-        print("Starting Workout")
-        
         if (workout_session != nil) {
             return
         }
@@ -165,8 +162,7 @@ class HealthManager {
             
             // Start the workout session and device motion updates.
             workout_session!.startActivity(with: Date.init()) // Start activity now
-            print("Starting workout session")
-            workout_session!.pause()
+            workout_session!.pause() // Pause to keep app in foreground
             
         } catch {
             fatalError("Unable to create the workout session!")

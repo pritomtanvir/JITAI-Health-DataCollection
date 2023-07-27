@@ -20,33 +20,28 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate
     //Holds the most up to date location of the watch
     var locationManager:CLLocationManager
     var currentLocation:CLLocation?
+    var updateTimer: Timer?
         
     
     override init()
     {
         locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyReduced
         locationManager.allowsBackgroundLocationUpdates = true
         super.init()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        // Initialization, but dont start until user starts walking.
-        locationManager.startUpdatingLocation()
-        
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestLocation()// if only authorized when in use
-            print("Location authorized")
-        }
+        Timer.scheduledTimer(withTimeInterval: 600.0, repeats: true) { timer in
+            self.locationManager.startUpdatingLocation()
+        }.fire()
     }
     
     // Updates current location any time location changes
     func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation])
     {
         self.currentLocation =  manager.location;
+        manager.stopUpdatingLocation()
+        print("Location update")
     }
     
     // Error handling for locationManager, this method is called when user denies authorization for location

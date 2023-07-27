@@ -52,10 +52,6 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         
         participant_id = fetch_participant_id()
         
-        connection_monitor.pathUpdateHandler = network_change;
-        connection_monitor.start(queue: DispatchQueue(label: "Network Monitor"))
-        
-        /* Uncomment to call upload_data without requiring a connection
         report_timer = Timer.scheduledTimer(
             timeInterval: report_interval,
             target: self,
@@ -63,28 +59,8 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
             userInfo: nil,
             repeats: true
         )
-        */
-        
     }
     
-    func network_change(_ path: NWPath) {
-        if path.status == .satisfied {
-            if(report_timer != nil) {return;}
-            print("Start sending to server");
-            
-            report_timer = Timer.scheduledTimer(
-                timeInterval: report_interval,
-                target: self,
-                selector: #selector(send_data),
-                userInfo: nil,
-                repeats: true
-            )
-        } else {
-            report_timer?.invalidate()
-            report_timer = nil;
-            print("Stop sending to server");
-        }
-    }
     
     //Fetches current data from each manager for storage
     @objc func save_data(_ timer: Timer) {
@@ -113,7 +89,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         let resting_energy = health_manager.resting_energy
         let battery = wk_interface.batteryLevel
         
-        guard let entity = NSEntityDescription.entity(forEntityName: "StreamData", in: container.viewContext)
+        guard let entity = NSEntityDescription.entity(forEntityName: "DataPoint", in: container.viewContext)
         else{return}
         let datapoint = NSManagedObject(entity: entity, insertInto: container.viewContext)
         datapoint.setValue(currentTime, forKey: "time")
@@ -127,6 +103,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         datapoint.setValue(active_energy, forKey: "activeenergy")
         datapoint.setValue(resting_energy, forKey: "restingenergy")
         datapoint.setValue(participant_id ?? "", forKey: "participantid")
+        datapoint.setValue(0, forKey: "sittingtime")
         
         guard container.viewContext.hasChanges else { return }
         do {
@@ -138,14 +115,17 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     }
     
     @objc func send_data() {
-        let request = NSFetchRequest<StreamData>(entityName: "StreamData");
+        //Do not attempt another upload if the previous hasnt resolved yet
+        if(upload_manager.prev_completed == false) {return;}
+        
+        let request = NSFetchRequest<DataPoint>(entityName: "DataPoint");
         
         var data_array: [[String : Any]] = [];
         
         do {
             let result = try container.viewContext.fetch(request);
             for data in result {
-                let data_dict = data.dictionaryWithValues(forKeys: ["time", "stepcount", "restingenergy", "participantid", "magnetometer", "location", "heartrate", "gyro", "battery", "activeenergy", "acceleration"])
+                let data_dict = data.dictionaryWithValues(forKeys: ["time", "stepcount", "restingenergy", "participantid", "magnetometer", "location", "heartrate", "gyro", "battery", "activeenergy", "acceleration", "sittingtime"])
                 
                 data_array.append(data_dict);
                 
@@ -158,31 +138,28 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         }
         
         if(data_array.isEmpty == false) {
-            //upload data to the server after emptying the store
             upload_manager.upload_data(data_array)
-        } else {
-            print("empty data array")
         }
     }
     
     
     func start_collecting() {
         print("Starting data collection")
-        if(read_timer != nil){return;}
-        
-        read_timer = Timer.scheduledTimer(
-            timeInterval: read_interval,
-            target: self,
-            selector: #selector(save_data),
-            userInfo: nil,
-            repeats: true
-        )
+        if(read_timer == nil) {
+            read_timer = Timer.scheduledTimer(
+                timeInterval: read_interval,
+                target: self,
+                selector: #selector(save_data),
+                userInfo: nil,
+                repeats: true
+            )
+        }
     }
     
     func stop_collecting() {
         print("Stopping data collection")
         read_timer?.invalidate()
-        read_timer = nil 
+        read_timer = nil
     }
     
     //Saves the input string to the persistent container as a ParticipantID

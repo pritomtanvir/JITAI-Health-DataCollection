@@ -42,8 +42,4 @@ class MotionManager {
         let magnet = self.motion_manager.magnetometerData
         return (accel, gyro, magnet)
     }
-    
-    
-    
-    
 }

@@ -11,8 +11,10 @@ import Network
 
 class UploadManager: NSObject, URLSessionDelegate {
     
+    var prev_completed = true
+    
     func upload_data(_ data: [[String : Any]]) {
-        
+        prev_completed = false
         var jsonData : Data = Data.init()
         do {
             jsonData = try JSONSerialization.data(withJSONObject: data, options: .withoutEscapingSlashes)
@@ -20,29 +22,27 @@ class UploadManager: NSObject, URLSessionDelegate {
             print(error.localizedDescription)
         }
         
-        //let json_str = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
-        //print(json_str)
-
-        /* Not exactly sure what the point of the localURL is when uploadTask can just take a Data object
-        let tempDir = FileManager.default.temporaryDirectory
-        let localURL = tempDir.appendingPathComponent("throwaway")
-        try? jsonData.write(to: localURL)
-        */
-        
-        
-        /*
+        let _json_str = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
+                
         //MAKE SURE TO CHANGE URL
-        let url = URL(string: "http://mas.cis.udel.edu/MPAS")!
+        let url = URL(string: "https://mas.cis.udel.edu/MPAS")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        let config = URLSessionConfiguration.background(withIdentifier: "uniqueId")
+        let config = URLSessionConfiguration.default
+        config.waitsForConnectivity = true
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-        let task = session.uploadTask(with: request, from: jsonData)
+        
+        let task = session.uploadTask(with: request, from: jsonData, completionHandler: completed_upload)
         task.resume()
-        */
+        //print("\n uploaded ", json_str)
+    }
+    
+    func completed_upload(_ data: Data?, _ response: URLResponse?, _ err: Error?) {
+        print("Data upload completed")
+        prev_completed = true
     }
 }
