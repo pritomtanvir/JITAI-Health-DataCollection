@@ -16,8 +16,9 @@ struct JITAI_Health_DataCollection_Watch_AppApp: App {
     @State var is_active: Bool = true //whether or not the data_manager is collecting data
     var data_manager =  DataManager()
     
-    @State var participant_id: String = "" //text input string for participant id
-    @State var has_participant_id: Bool = false
+    //ugly oneliner to get the participant id on load without defining init
+    @State var participant_id: String = UserDefaults.standard.string(forKey: "ParticipantID") ?? "";
+    @State var has_participant_id: Bool = UserDefaults.standard.string(forKey: "ParticipantID") != nil;
     
     let date_update_timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let time_format = Date.FormatStyle().hour().minute(.twoDigits)
@@ -37,7 +38,7 @@ struct JITAI_Health_DataCollection_Watch_AppApp: App {
                 }
             }
             Spacer()
-            if data_manager.participant_id == nil && has_participant_id == false {
+            if has_participant_id == false {
                 TextField("Participant ID:", text: $participant_id)
                 Button("Save participant id to device", action: save_pid)
             } else {
@@ -74,5 +75,4 @@ struct JITAI_Health_DataCollection_Watch_AppApp: App {
         data_manager.save_participant_id(participant_id)
         self.has_participant_id = true
     }
-    
 }

@@ -31,7 +31,7 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate
         super.init()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        Timer.scheduledTimer(withTimeInterval: 600.0, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 1800.0, repeats: true) { timer in
             self.locationManager.startUpdatingLocation()
         }.fire()
     }

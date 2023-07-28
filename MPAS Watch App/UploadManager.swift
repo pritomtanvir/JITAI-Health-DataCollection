@@ -22,7 +22,8 @@ class UploadManager: NSObject, URLSessionDelegate {
             print(error.localizedDescription)
         }
         
-        let _json_str = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
+        let json_str = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
+        //print("\n uploaded ", json_str)
                 
         //MAKE SURE TO CHANGE URL
         let url = URL(string: "https://mas.cis.udel.edu/MPAS")!
@@ -38,7 +39,6 @@ class UploadManager: NSObject, URLSessionDelegate {
         
         let task = session.uploadTask(with: request, from: jsonData, completionHandler: completed_upload)
         task.resume()
-        //print("\n uploaded ", json_str)
     }
     
     func completed_upload(_ data: Data?, _ response: URLResponse?, _ err: Error?) {

@@ -15,7 +15,7 @@ import Network
 class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     let container = NSPersistentContainer(name: "JITAIStore")
     
-    var participant_id: String?
+    var participant_id: String? = UserDefaults.standard.string(forKey: "ParticipantID")
     
     //data collection objects
     let geoloc_manager = GeoLocationManager() //Contains the current time, location, and weather
@@ -27,11 +27,11 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     let connection_monitor = NWPathMonitor();
     
     //Controls the rate at which data is fetched from each manager
-    let read_interval: TimeInterval = 1.0/5.0
+    let read_interval: TimeInterval = 1.0/30.0
     var read_timer: Timer?
     
     //Controls the rate at which data is fetched from the store and sent to the server
-    let report_interval: TimeInterval = 1.0
+    let report_interval: TimeInterval = 60.0
     var report_timer: Timer?
     
     var extended_session = WKExtendedRuntimeSession()
@@ -49,9 +49,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
                 print("Unresolved error \(error)")
             }
         } 
-        
-        participant_id = fetch_participant_id()
-        
+                
         report_timer = Timer.scheduledTimer(
             timeInterval: report_interval,
             target: self,
@@ -59,18 +57,25 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
             userInfo: nil,
             repeats: true
         )
+        
+        self.start_collecting()
     }
     
     
     //Fetches current data from each manager for storage
     @objc func save_data(_ timer: Timer) {
+        if wk_interface.batteryState == .charging || self.participant_id == nil {
+            return
+        }
+        //print("Saving data")
+        
         var location: String? = nil
         if let loc = self.geoloc_manager.fetchCurrentLocation() {
             location = String(loc.coordinate.latitude) + " " + String(loc.coordinate.longitude)
         }
         
         let motion = self.motion_manager.getMotionData()
-        let acceleration = String(format: "x:%.3f y:%.3f z:%.3f", motion.0?.x ?? Double.nan, motion.0?.y ?? Double.nan, motion.0?.z ?? Double.nan)
+        let acceleration = String(format: "x:%.3f y:%.3f z:%.3f", motion.0?.acceleration.x ?? Double.nan, motion.0?.acceleration.y ?? Double.nan, motion.0?.acceleration.z ?? Double.nan)
         let gyro = String(format: "x:%.3f y:%.3f z:%.3f", motion.1?.rotationRate.x ?? Double.nan, motion.1?.rotationRate.y ?? Double.nan, motion.1?.rotationRate.z ?? Double.nan)
         let magnet = String(format: "x:%.3f y:%.3f z:%.3f", motion.2?.magneticField.x ?? Double.nan, motion.2?.magneticField.y ?? Double.nan, motion.2?.magneticField.z ?? Double.nan)
         
@@ -165,26 +170,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     //Saves the input string to the persistent container as a ParticipantID
     func save_participant_id(_ id: String) {
         self.participant_id = id
-        guard let entity = NSEntityDescription.entity(forEntityName: "ParticipantID", in: container.viewContext)
-        else{return}
-        let datapoint = NSManagedObject(entity: entity, insertInto: container.viewContext)
-        datapoint.setValue(id, forKey: "id")
-    }
-    
-    func fetch_participant_id() -> String? {
-        var ret: String? = nil
-        let request = NSFetchRequest<ParticipantID>(entityName: "ParticipantID");
-        request.fetchLimit = 1
-        do {
-            let result = try container.viewContext.fetch(request);
-            for res in result {
-                ret = res.id
-            }
-        } catch let error {
-            print("Error fetching participant id")
-        }
-        
-        return ret
+        UserDefaults.standard.set(id, forKey: "ParticipantID")
     }
     
     
