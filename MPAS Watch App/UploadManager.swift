@@ -22,8 +22,8 @@ class UploadManager: NSObject, URLSessionDelegate {
             print(error.localizedDescription)
         }
         
-        let json_str = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
-        //print("\n uploaded ", json_str)
+        //let json_str = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
+        //print("\n uploaded \n", json_str)
                 
         //MAKE SURE TO CHANGE URL
         let url = URL(string: "https://mas.cis.udel.edu/MPAS")!

@@ -27,11 +27,11 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     let connection_monitor = NWPathMonitor();
     
     //Controls the rate at which data is fetched from each manager
-    let read_interval: TimeInterval = 1.0/30.0
+    let read_interval: TimeInterval = 1.0 //read data once per second
     var read_timer: Timer?
     
     //Controls the rate at which data is fetched from the store and sent to the server
-    let report_interval: TimeInterval = 60.0
+    let report_interval: TimeInterval = 7200.0 //two hours between attempted sends
     var report_timer: Timer?
     
     var extended_session = WKExtendedRuntimeSession()
@@ -74,10 +74,10 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
             location = String(loc.coordinate.latitude) + " " + String(loc.coordinate.longitude)
         }
         
-        let motion = self.motion_manager.getMotionData()
-        let acceleration = String(format: "x:%.3f y:%.3f z:%.3f", motion.0?.acceleration.x ?? Double.nan, motion.0?.acceleration.y ?? Double.nan, motion.0?.acceleration.z ?? Double.nan)
-        let gyro = String(format: "x:%.3f y:%.3f z:%.3f", motion.1?.rotationRate.x ?? Double.nan, motion.1?.rotationRate.y ?? Double.nan, motion.1?.rotationRate.z ?? Double.nan)
-        let magnet = String(format: "x:%.3f y:%.3f z:%.3f", motion.2?.magneticField.x ?? Double.nan, motion.2?.magneticField.y ?? Double.nan, motion.2?.magneticField.z ?? Double.nan)
+        //let motion = self.motion_manager.getMotionData()
+        let acceleration = self.motion_manager.getAccelBuffer()
+        let gyro = "x:nil y:nil z:nil";
+        let magnet = "x:nil y:nil z:nil";
         
         
         //getting the time
@@ -107,7 +107,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         datapoint.setValue(battery, forKey: "battery")
         datapoint.setValue(active_energy, forKey: "activeenergy")
         datapoint.setValue(resting_energy, forKey: "restingenergy")
-        datapoint.setValue(participant_id ?? "", forKey: "participantid")
+        datapoint.setValue(participant_id ?? "pid_error", forKey: "participantid")
         datapoint.setValue(0, forKey: "sittingtime")
         
         guard container.viewContext.hasChanges else { return }
