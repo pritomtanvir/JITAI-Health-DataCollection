@@ -14,6 +14,7 @@ import HealthKit
 class HealthManager {
     let health_store = HKHealthStore()
     
+    
     var workout_session: HKWorkoutSession?
     
     let ae_type = HKQuantityType(.activeEnergyBurned) //active energy
@@ -22,12 +23,10 @@ class HealthManager {
     let sc_type = HKQuantityType(.stepCount) //step count type
     
     let query_descriptors = [
-        HKQueryDescriptor(sampleType: HKQuantityType(.heartRate), predicate: nil),
         HKQueryDescriptor(sampleType: HKQuantityType(.stepCount), predicate: nil),
         HKQueryDescriptor(sampleType: HKQuantityType(.activeEnergyBurned), predicate: nil),
         HKQueryDescriptor(sampleType: HKQuantityType(.basalEnergyBurned), predicate: nil)
     ]
-    //ALSO NEED TO GET SITTING TIME
     
     
     var current_hr = 0.0
@@ -38,10 +37,14 @@ class HealthManager {
     //observer to update values whenever they change in the health store
     var observer: HKObserverQuery? = nil
     
+    var hr_timer: Timer?
+    
+    
     init() {
-        //health_store.enableBackgroundDelivery(for: hr_type, frequency: HKUpdateFrequency(rawValue: 1).unsafelyUnwrapped, withCompletion: background_authorization_completed)
+        health_store.enableBackgroundDelivery(for: hr_type, frequency: HKUpdateFrequency(rawValue: 60).unsafelyUnwrapped, withCompletion: background_authorization_completed)
         
         observer = HKObserverQuery(queryDescriptors: query_descriptors, updateHandler: observer_update_handler)
+        
         
         //request authorization for all data being collected
         if health_store.authorizationStatus(for: hr_type) == HKAuthorizationStatus.sharingAuthorized &&
@@ -58,6 +61,22 @@ class HealthManager {
                 completion: authorization_complete)
         }
         
+    }
+    
+    //Get the average heart rate from the past minute
+    func run_hr_query(_ _: Timer) {
+        let past_minute = HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .minute, value: -1, to: Date()), end: Date())
+        
+        let qd = HKStatisticsQueryDescriptor(
+            predicate: HKSamplePredicate.quantitySample(type: hr_type, predicate: past_minute),
+            options: .discreteAverage
+        )
+        Task {
+            current_hr = try (await qd.result(for: health_store)?
+                .averageQuantity()?
+                .doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!
+            //print("updated hr ", current_hr)
+        }
     }
     
     
@@ -89,6 +108,8 @@ class HealthManager {
         if observer != nil {
             print("Starting hr query")
             health_store.execute(observer!)
+            hr_timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: run_hr_query)
+            hr_timer?.fire()
         }
     }
     
@@ -96,6 +117,7 @@ class HealthManager {
     func stop_observer() {
         if observer != nil {
             health_store.stop(observer!)
+            hr_timer?.invalidate()
         }
     }
     
@@ -109,8 +131,6 @@ class HealthManager {
             
             //change the correct value depending on the query result
             switch sample.quantityType {
-            case HKQuantityType(.heartRate):
-                self.current_hr = sample.quantity.doubleValue(for: HKUnit.init(from: "count/min"))
             case HKQuantityType(.stepCount):
                 self.current_steps = sample.quantity.doubleValue(for: HKUnit.count())
             case HKQuantityType(.activeEnergyBurned):

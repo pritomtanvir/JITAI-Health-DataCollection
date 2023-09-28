@@ -24,10 +24,9 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     let wk_interface = WKInterfaceDevice()
     
     let upload_manager = UploadManager()
-    let connection_monitor = NWPathMonitor();
     
     //Controls the rate at which data is fetched from each manager
-    let read_interval: TimeInterval = 1.0 //read data once per second
+    let read_interval: TimeInterval = 1.0 //build a data frame once per second
     var read_timer: Timer?
     
     //Controls the rate at which data is fetched from the store and sent to the server
@@ -50,20 +49,17 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
             }
         } 
                 
-        report_timer = Timer.scheduledTimer(
-            timeInterval: report_interval,
-            target: self,
-            selector: #selector(send_data),
-            userInfo: nil,
-            repeats: true
-        )
+        
+        report_timer = Timer.scheduledTimer(withTimeInterval: report_interval, repeats: true, block: send_data)
+        report_timer?.fire()
         
         self.start_collecting()
     }
     
     
     //Fetches current data from each manager for storage
-    @objc func save_data(_ timer: Timer) {
+    func save_data(_ timer: Timer) {
+        //Do not save data if the battery is charging, no meaningful data can be collected
         if wk_interface.batteryState == .charging || self.participant_id == nil {
             return
         }
@@ -76,8 +72,8 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         
         //let motion = self.motion_manager.getMotionData()
         let acceleration = self.motion_manager.getAccelBuffer()
-        let gyro = "x:nil y:nil z:nil";
-        let magnet = "x:nil y:nil z:nil";
+        let gyro = "x:nan y:nan z:nan";
+        let magnet = "x:nan y:nan z:nan";
         
         
         //getting the time
@@ -119,7 +115,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         }
     }
     
-    @objc func send_data() {
+    func send_data(_ _: Timer) {
         //Do not attempt another upload if the previous hasnt resolved yet
         if(upload_manager.prev_completed == false) {return;}
         
@@ -151,13 +147,8 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     func start_collecting() {
         print("Starting data collection")
         if(read_timer == nil) {
-            read_timer = Timer.scheduledTimer(
-                timeInterval: read_interval,
-                target: self,
-                selector: #selector(save_data),
-                userInfo: nil,
-                repeats: true
-            )
+            read_timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: save_data)
+            read_timer?.fire()
         }
     }
     

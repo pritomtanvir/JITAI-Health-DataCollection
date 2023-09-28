@@ -24,7 +24,7 @@ class MotionManager {
             //THIS GIVES RAW ACCELERATION DATA
             //Using device motion updates gives user acceleration instead of raw acceleration
             print("Starting accelerometer updates")
-            motion_manager.accelerometerUpdateInterval = 1.0/30.0
+            motion_manager.accelerometerUpdateInterval = 1.0/10.0
             motion_manager.startAccelerometerUpdates()
             //Timer.scheduledTimer(timeInterval: 1.0/30.0, target: self, selector: #selector(accelUpdateHandler), userInfo: nil, repeats: true);
             motion_manager.startAccelerometerUpdates(to: queue, withHandler: accelUpdateHandler)

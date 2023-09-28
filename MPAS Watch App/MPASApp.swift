@@ -20,7 +20,7 @@ struct JITAI_Health_DataCollection_Watch_AppApp: App {
     @State var participant_id: String = UserDefaults.standard.string(forKey: "ParticipantID") ?? "";
     @State var has_participant_id: Bool = UserDefaults.standard.string(forKey: "ParticipantID") != nil;
     
-    let date_update_timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let date_update_timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     let time_format = Date.FormatStyle().hour().minute(.twoDigits)
     let date_format = Date.FormatStyle().month(.abbreviated).day()
     @State var date_string = ""

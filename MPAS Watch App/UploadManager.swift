@@ -26,7 +26,7 @@ class UploadManager: NSObject, URLSessionDelegate {
         //print("\n uploaded \n", json_str)
                 
         //MAKE SURE TO CHANGE URL
-        let url = URL(string: "https://mas.cis.udel.edu/MPAS")!
+        let url = URL(string: "https://mas.cis.udel.edu/mpas/mpas")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
