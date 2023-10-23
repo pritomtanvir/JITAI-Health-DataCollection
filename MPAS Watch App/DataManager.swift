@@ -63,7 +63,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         if wk_interface.batteryState == .charging || self.participant_id == nil {
             return
         }
-        //print("Saving data")
+        print("Saving data")
         
         var location: String? = nil
         if let loc = self.geoloc_manager.fetchCurrentLocation() {
@@ -71,8 +71,12 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         }
         
         //let motion = self.motion_manager.getMotionData()
-        let acceleration = self.motion_manager.getAccelBuffer()
-        let gyro = "x:nan y:nan z:nan";
+        var acceleration = self.motion_manager.getAccelBuffer()
+        if acceleration == "" {
+            acceleration = "x:nan y:nan z:nan";
+        }
+        let gyroData = self.motion_manager.getGyroData();
+        let gyro = String(format: "x:%.3f y:%.3f z:%.3f", gyroData?.rotationRate.x ?? Double.nan, gyroData?.rotationRate.y ?? Double.nan, gyroData?.rotationRate.z ?? Double.nan)
         let magnet = "x:nan y:nan z:nan";
         
         

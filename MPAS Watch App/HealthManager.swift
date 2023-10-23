@@ -65,7 +65,7 @@ class HealthManager {
     
     //Get the average heart rate from the past minute
     func run_hr_query(_ _: Timer) {
-        let past_minute = HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .minute, value: -1, to: Date()), end: Date())
+        let past_minute = HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .second, value: -30, to: Date()), end: Date())
         
         let qd = HKStatisticsQueryDescriptor(
             predicate: HKSamplePredicate.quantitySample(type: hr_type, predicate: past_minute),
@@ -74,7 +74,7 @@ class HealthManager {
         Task {
             current_hr = try (await qd.result(for: health_store)?
                 .averageQuantity()?
-                .doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!
+                .doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))) ?? 0.0
             //print("updated hr ", current_hr)
         }
     }
@@ -108,7 +108,7 @@ class HealthManager {
         if observer != nil {
             print("Starting hr query")
             health_store.execute(observer!)
-            hr_timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: run_hr_query)
+            hr_timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: run_hr_query)
             hr_timer?.fire()
         }
     }

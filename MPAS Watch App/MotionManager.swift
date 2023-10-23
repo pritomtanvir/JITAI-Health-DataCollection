@@ -24,17 +24,17 @@ class MotionManager {
             //THIS GIVES RAW ACCELERATION DATA
             //Using device motion updates gives user acceleration instead of raw acceleration
             print("Starting accelerometer updates")
-            motion_manager.accelerometerUpdateInterval = 1.0/10.0
+            motion_manager.accelerometerUpdateInterval = 1.0/15.0
             motion_manager.startAccelerometerUpdates()
             //Timer.scheduledTimer(timeInterval: 1.0/30.0, target: self, selector: #selector(accelUpdateHandler), userInfo: nil, repeats: true);
             motion_manager.startAccelerometerUpdates(to: queue, withHandler: accelUpdateHandler)
         }
-        /*
         if motion_manager.isGyroAvailable {
             print("Starting gyroscope updates")
-            motion_manager.gyroUpdateInterval = interval
+            motion_manager.gyroUpdateInterval = 1.0
             motion_manager.startGyroUpdates()
         }
+        /*
         if motion_manager.isMagnetometerAvailable {
             print("Starting magnetometer updates")
             motion_manager.magnetometerUpdateInterval = interval
@@ -65,5 +65,9 @@ class MotionManager {
     
     @objc func accelUpdateHandler(_ data: CMAccelerometerData?, _ err: Error?) {
         self.data_buffer.append(data)
+    }
+    
+    func getGyroData() -> CMGyroData? {
+        return motion_manager.gyroData
     }
 }

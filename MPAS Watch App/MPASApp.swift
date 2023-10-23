@@ -23,8 +23,8 @@ struct JITAI_Health_DataCollection_Watch_AppApp: App {
     let date_update_timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     let time_format = Date.FormatStyle().hour().minute(.twoDigits)
     let date_format = Date.FormatStyle().month(.abbreviated).day()
-    @State var date_string = ""
-    @State var time_string = ""
+    @State var date_string = Date().formatted(Date.FormatStyle().month(.abbreviated).day())
+    @State var time_string = Date().formatted(Date.FormatStyle().hour().minute(.twoDigits))
         
     var body: some Scene {
         WindowGroup {
