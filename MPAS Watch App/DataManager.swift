@@ -63,7 +63,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         if wk_interface.batteryState == .charging || self.participant_id == nil {
             return
         }
-        print("Saving data")
+        //print("Saving data")
         
         var location: String? = nil
         if let loc = self.geoloc_manager.fetchCurrentLocation() {
