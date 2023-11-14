@@ -9,11 +9,13 @@ import Foundation
 import WatchKit
 import CoreData
 import Network
-
+import SwiftUI
 
 //This class holds instances of each manager that collects required data
 class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     let container = NSPersistentContainer(name: "JITAIStore")
+    
+    var extended_session = WKExtendedRuntimeSession()
     
     var participant_id: String? = UserDefaults.standard.string(forKey: "ParticipantID")
     
@@ -33,7 +35,6 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     let report_interval: TimeInterval = 7200.0 //two hours between attempted sends
     var report_timer: Timer?
     
-    var extended_session = WKExtendedRuntimeSession()
 
     
     override init() {
@@ -54,6 +55,7 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
         report_timer?.fire()
         
         self.start_collecting()
+        self.start_extended_session()
     }
     
     
@@ -169,7 +171,14 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
     }
     
     
-    //MARK: Extended runtime session delegate functions
+    
+
+    //MARK: Extended runtime session functions
+    
+    func start_extended_session() {
+        print("Starting extended runtime session")
+        self.extended_session.start()
+    }
     
     func extendedRuntimeSessionDidStart(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
         print("Started extended runtime session")
@@ -177,6 +186,11 @@ class DataManager: NSObject, WKExtendedRuntimeSessionDelegate {
 
     func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
         print("Stopping extended runtime session")
+        //Invalidate then start a new extended session
+        //Fairly certain this won't work with new watchos versions
+        extendedRuntimeSession.invalidate()
+        self.extended_session = WKExtendedRuntimeSession()
+        self.extended_session.start()
     }
         
     func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {

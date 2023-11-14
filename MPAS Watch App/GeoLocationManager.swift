@@ -10,12 +10,6 @@ import CoreLocation
 
 class GeoLocationManager: NSObject, CLLocationManagerDelegate
 {
-    //Weather API keys
-    private let climacellBaseURL = "https://api.tomorrow.io/v4/timelines?location"
-    private let climacellRealtimeURL = "https://api.tomorrow.io/v4/timelines?location="
-    private let climacellAPIKey = "3OaVMDtj7VNxuAYSGU71R3lWN3XmqbFH"
-   // curl --request GET --url \
-    //'https://api.tomorrow.io/v4/timelines?location=-73.98529171943665,40//////.75872069597532&fields=temperature&timesteps=1h&units=metric&apikey=3OaVMDtj7VNxuAYSGU71R3lWN3XmqbFH'
     
     //Holds the most up to date location of the watch
     var locationManager:CLLocationManager
@@ -31,16 +25,17 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate
         super.init()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        Timer.scheduledTimer(withTimeInterval: 1800.0, repeats: true) { timer in
-            self.locationManager.startUpdatingLocation()
-        }.fire()
+        //Timer.scheduledTimer(withTimeInterval: 1800.0, repeats: true) { timer in
+        //    self.locationManager.startUpdatingLocation()
+        //}.fire()
+        locationManager.startUpdatingLocation()
     }
     
     // Updates current location any time location changes
     func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation])
     {
         self.currentLocation =  manager.location;
-        manager.stopUpdatingLocation()
+        //manager.stopUpdatingLocation()
         print("Location update")
     }
     
